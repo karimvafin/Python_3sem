@@ -1,23 +1,16 @@
 from matplotlib import pyplot as plt
+from collections import defaultdict
 
 with open('students.csv') as file:
     students = file.read().split('\n')
 
-preps = {}
-groups = {}
+preps = defaultdict(lambda: {str(i) : 0 for i in range(3, 11)})
+groups = defaultdict(lambda: {str(i) : 0 for i in range(3, 11)})
 
 for st in students:
     st = st.split(';')
-    if st[0] in preps.keys():
-        preps[st[0]][st[2]] += 1
-    else:
-        preps[st[0]] = dict.fromkeys([str(i) for i in range(3, 11)], 0)
-        preps[st[0]][st[2]] = 1
-    if st[1] in groups.keys():
-        groups[st[1]][st[2]] += 1
-    else:
-        groups[st[1]] = dict.fromkeys([str(i) for i in range(3, 11)], 0)
-        groups[st[1]][st[2]] = 1
+    preps[st[0]][st[2]] += 1
+    groups[st[1]][st[2]] += 1
 
 colors = ['mediumorchid', 'blueviolet', 'navy', 'royalblue', 'darkslategrey', 'limegreen', 'darkgreen', 'yellow']
 clrs = {str(i): k for i, k in zip(range(3, 11), colors)}
