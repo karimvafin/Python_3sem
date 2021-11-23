@@ -15,7 +15,7 @@ for filename in os.listdir(path='dead_moroz'):
     scale = (max(Y) - min(Y)) / (max(X) - min(X))
     plt.figure()
 
-    r = math.sqrt(X[0] ** 2 + Y[0] ** 2)
+    r = 1
     for x, y in zip(X, Y):
         for i, j in zip(X, Y):
             current_r = math.sqrt((x - i) ** 2 + (y - j) ** 2)
