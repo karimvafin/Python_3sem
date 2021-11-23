@@ -6,7 +6,7 @@ import math
 for filename in os.listdir(path='dead_moroz'):
     X = []
     Y = []
-    with open('dead_moroz/' + filename) as file:
+    with open(os.path.join("dead_moroz", filename)) as file:
         file_string = file.read().split('\n')
         for i in range(1, int(file_string[0]) + 1):
             X.append(float(file_string[i].split()[0]))
